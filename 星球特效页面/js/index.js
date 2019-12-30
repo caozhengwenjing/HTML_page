@@ -14,7 +14,7 @@ camera.position.z = 500
 system = new THREE.Group(); // planetary system
 
 scene.add(
-  new THREE.AmbientLight(0xFFFFFF, 0.2)
+    new THREE.AmbientLight(0xFFFFFF, 0.2)
 );
 
 var light = new THREE.DirectionalLight(0xFFFFFF, 2.5);
@@ -22,18 +22,18 @@ light.position.set(1500, 2500, 0);
 scene.add(light);
 
 var material = new THREE.MeshLambertMaterial({
-  color: 0x0C2D4D
+    color: 0x0C2D4D
 });
 
 var planet = new THREE.Mesh(
-  new THREE.IcosahedronGeometry(100, 3),
-  material
+    new THREE.IcosahedronGeometry(100, 3),
+    material
 );
 
 for (var i = 0; i < planet.geometry.vertices.length; i++)
-  planet.geometry.vertices[i].multiplyScalar(
-    Math.random() * 0.05 + 0.95
-  );
+    planet.geometry.vertices[i].multiplyScalar(
+        Math.random() * 0.05 + 0.95
+    );
 
 planet.geometry.computeFlatVertexNormals();
 system.add(planet);
@@ -41,22 +41,22 @@ system.add(planet);
 var asteroids = new THREE.Group();
 
 for (var p = 0; p < Math.PI * 2; p = p + Math.random() * 0.15) {
-  var asteroid = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(8, 0),
-    material
-  );
-
-  var size = Math.random() * 0.5;
-  for (var i = 0; i < asteroid.geometry.vertices.length; i++)
-    asteroid.geometry.vertices[i].multiplyScalar(
-      Math.random() * 0.5 + size
+    var asteroid = new THREE.Mesh(
+        new THREE.IcosahedronGeometry(8, 0),
+        material
     );
 
-  rand = Math.random() * 60 - 30;
-  asteroid.position.set(200 * Math.sin(p) + rand, rand, 200 * Math.cos(p) + rand);
+    var size = Math.random() * 0.5;
+    for (var i = 0; i < asteroid.geometry.vertices.length; i++)
+        asteroid.geometry.vertices[i].multiplyScalar(
+            Math.random() * 0.5 + size
+        );
 
-  asteroid.geometry.computeFlatVertexNormals();
-  asteroids.add(asteroid);
+    rand = Math.random() * 60 - 30;
+    asteroid.position.set(200 * Math.sin(p) + rand, rand, 200 * Math.cos(p) + rand);
+
+    asteroid.geometry.computeFlatVertexNormals();
+    asteroids.add(asteroid);
 }
 
 system.add(asteroids);
@@ -68,32 +68,32 @@ system.rotation.z = -0.4;
 scene.add(system);
 
 for (i = 0; i < 10; i++) {
-  particles = new THREE.Points(
-    new THREE.Geometry(),
-    new THREE.PointsMaterial({
-      size: Math.random() * 5
-    })
-  );
-  for (j = 0; j < 20; j++) {
-    var vertex = new THREE.Vector3();
-    vertex.x = Math.random() * width * 1.1 - width * 1.1 / 2;
-    vertex.y = Math.random() * height * 1.1 - height * 1.1 / 2;
-    vertex.z = -500;
-    particles.geometry.vertices.push(vertex);
-    particles.material.color.setScalar(Math.random() * 0.4 + 0.2);
-  }
-  scene.add(particles);
+    particles = new THREE.Points(
+        new THREE.Geometry(),
+        new THREE.PointsMaterial({
+            size: Math.random() * 5
+        })
+    );
+    for (j = 0; j < 20; j++) {
+        var vertex = new THREE.Vector3();
+        vertex.x = Math.random() * width * 1.1 - width * 1.1 / 2;
+        vertex.y = Math.random() * height * 1.1 - height * 1.1 / 2;
+        vertex.z = -500;
+        particles.geometry.vertices.push(vertex);
+        particles.material.color.setScalar(Math.random() * 0.4 + 0.2);
+    }
+    scene.add(particles);
 }
 
 function render() {
-  requestAnimationFrame(render);
+    requestAnimationFrame(render);
 
-  planet.rotation.y += 0.001;
-  planet.rotation.z -= 0.0005;
+    planet.rotation.y += 0.001;
+    planet.rotation.z -= 0.0005;
 
-  asteroids.rotation.y += 0.003;
+    asteroids.rotation.y += 0.003;
 
-  renderer.render(scene, camera);
+    renderer.render(scene, camera);
 }
 
 render();
