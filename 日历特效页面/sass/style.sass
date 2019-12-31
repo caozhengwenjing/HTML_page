@@ -32,12 +32,14 @@
   table
     border-collapse: collapse
     border-spacing: 0
+
 @mixin unselectable
   -moz-user-select: -moz-none
   -khtml-user-select: none
   -webkit-user-select: none
   -ms-user-select: none
   user-select: none
+
 @mixin clearfloat
   &:before, &:after
     content: ""
@@ -45,6 +47,7 @@
   &:after
     clear: both
   zoom: 1
+
 @mixin border-box
   -moz-box-sizing: border-box
   -webkit-box-sizing: border-box
@@ -59,12 +62,15 @@ html, body
   margin: 0
   padding: 0
   height: 100%
+
 #wrapper
   padding: 12px
+
 select
   -webkit-appearance: menulist-button
   width: 200px
   height: 25px
+
 .drp-popup
   font-family: "AvenirLTStd-Heavy", "Avenir LT Std 85 Heavy", "Open Sans", Helvetica, Arial, sans-serif
 
@@ -109,19 +115,24 @@ $calendar-width: ($day-width * 7) + ($day-spacing * 6)
   -webkit-box-shadow: $outer-box-shadow
   -moz-box-shadow: $outer-box-shadow
   box-shadow: $outer-box-shadow
+
   a
     text-decoration: none
+
   ul
     list-style: none
     padding: 0
     margin: 0
+
   .drp-timeline
     position: relative
+
     .drp-timeline-bar
       position: relative
       height: 13px
       border-bottom: 3px solid $light-gray
       bottom: 21px
+
       &:before, &:after
         content: ''
         position: absolute
@@ -129,12 +140,15 @@ $calendar-width: ($day-width * 7) + ($day-spacing * 6)
         border-left: 3px solid $light-gray
         bottom: -9px
         left: 0
+
       &:after
         left: auto
         right: 0
+
     .drp-timeline-presets
       position: relative
       z-index: 1
+
       li
         position: relative
         width: 87px
@@ -146,8 +160,10 @@ $calendar-width: ($day-width * 7) + ($day-spacing * 6)
         background-image: url('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==')
         text-align: center
         cursor: pointer
+
         &:first-child
           margin-left: 3px
+
         .drp-button
           z-index: 2
           cursor: pointer
@@ -165,20 +181,24 @@ $calendar-width: ($day-width * 7) + ($day-spacing * 6)
           -moz-transition: all 0.15s ease
           -o-transition: all 0.15s ease
           transition: all 0.15s ease
+
         &.drp-selected
           color: $text-color
+
         &.drp-selected .drp-button, &:hover .drp-button
           background-color: $selected-color
           width: 16px
           height: 16px
           left: 35px
           bottom: 2px
+
   .drp-calendar
     display: table-cell
     vertical-align: top
     width: $calendar-width
     padding-bottom: 8px
     border-bottom: 1px solid $border-color
+
     .drp-month-picker
       position: relative
       background-color: $lighter-gray
@@ -188,9 +208,11 @@ $calendar-width: ($day-width * 7) + ($day-spacing * 6)
       border-radius: 20px
       margin-bottom: 3px
       line-height: 32px
+
       .drp-month-title
         font-size: 14px
         text-align: center
+
       .drp-arrow
         @include unselectable
         cursor: pointer
@@ -202,9 +224,11 @@ $calendar-width: ($day-width * 7) + ($day-spacing * 6)
         left: 0
         top: 0
         color: $month-picker-arrow-color
+
       .drp-arrow-right
         left: auto
         right: 0px
+
     .drp-day-headers
       li
         display: inline-block
@@ -213,10 +237,13 @@ $calendar-width: ($day-width * 7) + ($day-spacing * 6)
         line-height: 26px
         margin: 0 0 $day-spacing $day-spacing
         text-align: center
+
         &:first-child
           margin-left: 0
+
     .drp-days
       @include clearfloat
+
       li
         @include unselectable
         width: $day-width + $day-spacing
@@ -227,29 +254,38 @@ $calendar-width: ($day-width * 7) + ($day-spacing * 6)
         line-height: 26px
         text-align: center
         margin: 0 0 $day-spacing 0
+
         &.drp-day-last-in-row
           width: $day-width
           border-right: none
+
         &.drp-day-in-range
           color: $selected-color
           background-color: $in-range-bgcolor
           border-color: $in-range-bgcolor
+
         &.drp-day-last-in-range
           border-color: $bgcolor
+
         &.drp-day-selected, &:hover
           color: $lighter-gray
           background-color: $selected-color
+
         &.drp-day-disabled
           color: $light-gray
+
           &:hover
             background-color: $bgcolor
             cursor: default
+
       .drp-day-empty
         background-color: transparent !important
         cursor: auto
+
   .drp-calendars
     padding: 18px 0 10px
     border-top: 1px solid $border-color
+
   .drp-calendar:first-child
     .drp-day-selected
       border-color: $in-range-bgcolor
@@ -262,12 +298,15 @@ $calendar-width: ($day-width * 7) + ($day-spacing * 6)
     text-align: center
     color: $selected-color
     font-size: 16px
+
     &:before
       font-size: 12px
       color: $text-color
+
   .drp-calendar-start
     .drp-calendar-date:before
       content: 'Start Date: '
+
   .drp-calendar-end
     .drp-calendar-date:before
       content: 'End Date: '
@@ -277,12 +316,14 @@ $calendar-width: ($day-width * 7) + ($day-spacing * 6)
     position: relative
     width: 69px
     top: 8px
+
     &:before
       content: ''
       position: absolute
       height: 90%
       border-left: 1px solid $border-color
       left: 34px
+
     &:after
       content: 'To'
       position: absolute
@@ -294,19 +335,23 @@ $calendar-width: ($day-width * 7) + ($day-spacing * 6)
       text-align: center
       font-size: 16px
       line-height: 41px
+
   .drp-tip
     position: absolute
     top: 0
     left: 30px
+
     &:before, &:after
       content: ""
       position: absolute
       border-style: solid
       bottom: 0
+
     &:before
       left: 0
       border-width: 0 16px 16px
       border-color: $outer-border-color transparent
+
     &:after
       left: 2px
       border-width: 0px 14px 14px
