@@ -10,7 +10,6 @@
 .clearfix {
     *zoom: 1
 }
-
 .clearfix:before, .clearfix:after {
     display: table;
     line-height: 0;
